@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"simplehttpserver/models"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -13,4 +15,5 @@ func SetupDatabase(dsn string) {
 		panic("failed to connect database")
 	}
 	db = database
+	db.AutoMigrate(&models.Article{})
 }
